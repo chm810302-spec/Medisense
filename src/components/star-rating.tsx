@@ -29,6 +29,7 @@ export function StarRating({ value, onChange }: StarRatingProps) {
             onMouseEnter={() => setHoverValue(starValue)}
             onMouseLeave={() => setHoverValue(0)}
             aria-label={`Rate ${starValue} out of 5 stars`}
+            suppressHydrationWarning
           >
             <Star
               className="h-9 w-9"

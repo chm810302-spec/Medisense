@@ -166,7 +166,7 @@ export function FeedbackForm() {
                       </span>
                     </FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., John Doe" {...field} />
+                      <Input placeholder="e.g., John Doe" {...field} suppressHydrationWarning />
                     </FormControl>
                   </FormItem>
                 )}
@@ -188,7 +188,7 @@ export function FeedbackForm() {
                   <FormItem>
                     <FormLabel>Email Address</FormLabel>
                     <FormControl>
-                      <Input placeholder="you@example.com" {...field} />
+                      <Input placeholder="you@example.com" {...field} suppressHydrationWarning />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -202,7 +202,7 @@ export function FeedbackForm() {
                   <FormItem>
                     <FormLabel>Phone Number</FormLabel>
                     <FormControl>
-                      <Input placeholder="0412 345 678" {...field} />
+                      <Input placeholder="0412 345 678" {...field} suppressHydrationWarning />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -222,7 +222,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" className="w-full text-lg py-6" disabled={pending}>
+    <Button type="submit" className="w-full text-lg py-6" disabled={pending} suppressHydrationWarning>
       {pending ? (
         <Loader2 className="mr-2 h-5 w-5 animate-spin" />
       ) : (
