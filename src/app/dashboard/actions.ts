@@ -30,6 +30,8 @@ export async function generateSummary(): Promise<string> {
       message: f.message,
       name: f.name,
       timestamp: f.timestamp ? format(f.timestamp.toDate(), 'yyyy-MM-dd HH:mm:ss') : "N/A",
+      email: f.email,
+      phone: f.phone,
     }));
 
     const summary = await summarizePatientFeedback({ feedback: formattedFeedback });

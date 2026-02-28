@@ -10,4 +10,6 @@ export type Feedback = {
   isUrgent?: boolean;
   urgencyCategory?: string;
   summaryOfConcern?: string;
+  email?: string;
+  phone?: string;
 };

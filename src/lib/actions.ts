@@ -10,6 +10,8 @@ const FormSchema = z.object({
   improvement: z.string().optional(),
   message: z.string().optional(),
   name: z.string().optional(),
+  email: z.string().email({ message: "Invalid email address." }).optional().or(z.literal("")),
+  phone: z.string().optional(),
 });
 
 export type FormState = {
@@ -26,6 +28,8 @@ export async function submitFeedback(
     improvement: formData.get("improvement"),
     message: formData.get("message"),
     name: formData.get("name"),
+    email: formData.get("email"),
+    phone: formData.get("phone"),
   });
 
   if (!validatedFields.success) {
@@ -35,7 +39,7 @@ export async function submitFeedback(
     };
   }
 
-  const { satisfaction, improvement, message, name } = validatedFields.data;
+  const { satisfaction, improvement, message, name, email, phone } = validatedFields.data;
 
   try {
     // 1. Analyze feedback for urgency with Genkit AI
@@ -51,6 +55,8 @@ export async function submitFeedback(
       satisfaction,
       improvement: improvement || "",
       message: message || "",
+      email: email || "",
+      phone: phone || "",
       isUrgent: urgencyAnalysis.isUrgent,
       urgencyCategory: urgencyAnalysis.urgencyCategory,
       summaryOfConcern: urgencyAnalysis.summaryOfConcern,

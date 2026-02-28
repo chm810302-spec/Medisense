@@ -16,6 +16,8 @@ const PatientFeedbackSchema = z.object({
   message: z.string().optional().describe('General message or comments from the patient.'),
   name: z.string().optional().describe('The name of the patient, if provided. Defaults to "Anonymous".'),
   timestamp: z.string().describe('The timestamp of when the feedback was submitted.'),
+  email: z.string().optional().describe('The email of the patient, if provided.'),
+  phone: z.string().optional().describe('The phone number of the patient, if provided.'),
 });
 
 const SummarizePatientFeedbackInputSchema = z.object({

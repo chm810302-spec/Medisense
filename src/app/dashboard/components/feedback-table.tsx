@@ -2,7 +2,7 @@
 
 import type { Feedback } from "@/lib/types";
 import { format } from "date-fns";
-import { Star, AlertTriangle } from "lucide-react";
+import { Star, AlertTriangle, Mail, Phone } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -66,6 +66,7 @@ export function FeedbackTable({ feedback }: { feedback: Feedback[] }) {
             <TableHead className="text-center">Rating</TableHead>
             <TableHead>Urgency</TableHead>
             <TableHead>Message / Improvement</TableHead>
+            <TableHead>Contact</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -85,6 +86,43 @@ export function FeedbackTable({ feedback }: { feedback: Feedback[] }) {
                  <div className="max-w-md truncate text-sm text-muted-foreground">
                    {item.message || item.improvement || "No comment"}
                  </div>
+              </TableCell>
+              <TableCell>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  {item.email && (
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <a href={`mailto:${item.email}`} className="flex items-center gap-1 hover:text-foreground">
+                            <Mail className="h-4 w-4" />
+                            <span className="sr-only">Email</span>
+                          </a>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{item.email}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  )}
+                  {item.phone && (
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <a href={`tel:${item.phone}`} className="flex items-center gap-1 hover:text-foreground">
+                            <Phone className="h-4 w-4" />
+                            <span className="sr-only">Phone</span>
+                          </a>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>{item.phone}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  )}
+                  {(!item.email && !item.phone) && (
+                    <span className="text-xs">N/A</span>
+                  )}
+                </div>
               </TableCell>
             </TableRow>
           ))}

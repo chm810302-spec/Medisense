@@ -29,6 +29,8 @@ const FormSchema = z.object({
   improvement: z.string().optional(),
   message: z.string().optional(),
   name: z.string().optional(),
+  email: z.string().email({ message: "Invalid email address." }).optional().or(z.literal("")),
+  phone: z.string().optional(),
 });
 
 const initialState: FormState = {
@@ -48,6 +50,8 @@ export function FeedbackForm() {
       improvement: "",
       message: "",
       name: "",
+      email: "",
+      phone: "",
     },
   });
 
@@ -164,6 +168,43 @@ export function FeedbackForm() {
                     <FormControl>
                       <Input placeholder="e.g., John Doe" {...field} />
                     </FormControl>
+                  </FormItem>
+                )}
+              />
+              
+              <Separator />
+
+              <div className="space-y-2">
+                <p className="text-base font-medium">Contact Information</p>
+                <p className="text-sm text-muted-foreground">
+                  Provide your details if you'd like us to follow up on your feedback (optional).
+                </p>
+              </div>
+
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email Address</FormLabel>
+                    <FormControl>
+                      <Input placeholder="you@example.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number</FormLabel>
+                    <FormControl>
+                      <Input placeholder="0412 345 678" {...field} />
+                    </FormControl>
+                    <FormMessage />
                   </FormItem>
                 )}
               />
