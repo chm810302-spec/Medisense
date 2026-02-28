@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useEffect, useState, useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -37,7 +37,7 @@ const initialState: FormState = {
 };
 
 export function FeedbackForm() {
-  const [formState, formAction] = useFormState(submitFeedback, initialState);
+  const [formState, formAction] = useActionState(submitFeedback, initialState);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
 
