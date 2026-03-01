@@ -177,7 +177,7 @@ export function FeedbackForm() {
               <div className="space-y-2">
                 <p className="text-base font-medium">Contact Information</p>
                 <p className="text-sm text-muted-foreground">
-                  Provide your details if you'd like us to follow up on your feedback (optional).
+                  Provide your details if you&apos;d like us to follow up on your feedback (optional).
                 </p>
               </div>
 
