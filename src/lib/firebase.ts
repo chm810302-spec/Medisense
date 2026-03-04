@@ -10,23 +10,24 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Check if all necessary environment variables are present
-const isConfigValid = !!firebaseConfig.apiKey && !!firebaseConfig.projectId;
-
-if (!isConfigValid && typeof window !== 'undefined') {
-  console.warn("Firebase environment variables are missing. Please check your .env file.");
-}
-
 let app: FirebaseApp;
 let db: Firestore;
 
-if (getApps().length === 0) {
-  // Only initialize if config is valid or if we want to allow it to throw a better error
-  app = initializeApp(firebaseConfig);
-} else {
-  app = getApps()[0];
+try {
+  if (getApps().length === 0) {
+    // If apiKey is missing, initializeApp will throw an error. 
+    // We catch it to prevent the entire server from crashing on boot if env vars are missing during build.
+    if (!firebaseConfig.apiKey && typeof window === 'undefined') {
+      console.warn("Firebase API Key is missing. Check your environment variables.");
+    }
+    app = initializeApp(firebaseConfig);
+  } else {
+    app = getApps()[0];
+  }
+  db = getFirestore(app);
+} catch (error) {
+  console.error("Error initializing Firebase:", error);
+  // Fallback to avoid breaking the build process if possible
 }
-
-db = getFirestore(app);
 
 export { db };
