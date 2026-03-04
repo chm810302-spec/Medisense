@@ -1,0 +1,33 @@
+
+> nextn@0.1.0 build
+> NODE_ENV=production next build
+
+   ▲ Next.js 15.5.9
+   - Environments: .env
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 19.8s
+   Linting and checking validity of types ...
+   Collecting page data ...
+Firebase API Key is missing. Check your environment variables.
+   Generating static pages (0/4) ...
+   Generating static pages (1/4) 
+   Generating static pages (2/4) 
+   Generating static pages (3/4) 
+ ✓ Generating static pages (4/4)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    29.3 kB         140 kB
+├ ○ /_not-found                            998 B         102 kB
+└ ƒ /dashboard                           25.3 kB         136 kB
++ First Load JS shared by all             101 kB
+  ├ chunks/255-99e1d6b668e20fa1.js       45.4 kB
+  ├ chunks/4bd1b696-21f374d1156f834a.js  54.2 kB
+  └ other shared chunks (total)          1.83 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

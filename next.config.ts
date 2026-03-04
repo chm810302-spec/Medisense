@@ -2,11 +2,12 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
+  // Disabling error ignoring to find the real issue
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
   images: {
     remotePatterns: [
@@ -24,7 +25,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // App Hosting works best with standard Next.js build output unless specified otherwise
 };
 
 export default nextConfig;
