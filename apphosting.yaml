@@ -5,3 +5,23 @@ runConfig:
   # Increase this value if you'd like to automatically spin up
   # more instances in response to increased traffic.
   maxInstances: 1
+
+runtime: nodejs20
+
+# Environment variables for your backend.
+# Note: Do not put sensitive secrets here. Use Secret Manager instead.
+# env:
+#   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+#     value: YOUR_API_KEY
+#   - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+#     value: YOUR_AUTH_DOMAIN
+#   - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+#     value: YOUR_PROJECT_ID
+#   - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+#     value: YOUR_STORAGE_BUCKET
+#   - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+#     value: YOUR_MESSAGING_SENDER_ID
+#   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+#     value: YOUR_APP_ID
+#   - variable: GEMINI_API_KEY
+#     value: YOUR_GEMINI_API_KEY
